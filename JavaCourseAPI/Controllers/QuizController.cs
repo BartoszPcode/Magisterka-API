@@ -68,7 +68,6 @@ namespace JavaCourseAPI.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpGet("testAPI")]
         public async Task<IActionResult> TestAPI()
         {
