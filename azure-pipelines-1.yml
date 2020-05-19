@@ -8,6 +8,13 @@ trigger:
     - master
 variables:
 - name: buildConfiguration
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure dla studentów (95b577dc-ed59-4d96-b74a-0b54bdd47ef9)'
+    appType: 'webAppLinux'
+    WebAppName: 'Magisterka-Ubuntu'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
   value: Release
 stages:
 - stage: __default
