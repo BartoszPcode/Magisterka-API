@@ -67,5 +67,12 @@ namespace JavaCourseAPI.Controllers
             await _quizService.SaveAnswerForQuizAsync(answerQuiz);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("testAPI")]
+        public async Task<IActionResult> TestAPI()
+        {
+            return Ok("Ok :)");
+        }
     }
 }
