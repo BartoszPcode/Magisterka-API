@@ -48,14 +48,15 @@ namespace JavaCourseAPI
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // configure strongly typed settings objects
-            var appSettingsSection = Configuration.GetSection("AppSettings");
+            /*var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-            //var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JWTSettings:JWTSecret").Value);
+            //var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JWTSettings:JWTSecret").Value);*/
+            var key = Encoding.ASCII.GetBytes("Ptaki latajOM kluczem");
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
