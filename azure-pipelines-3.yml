@@ -37,6 +37,6 @@ stages:
         ConnectionType: 'AzureRM'
         azureSubscription: 'Azure dla studentów (95b577dc-ed59-4d96-b74a-0b54bdd47ef9)'
         appType: 'webAppLinux'
-        WebAppName: 
+        WebAppName: 'JavaCourseAPI'
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
