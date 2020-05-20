@@ -23,7 +23,7 @@ namespace JavaCourseAPI.Controllers
             _quizService = quizService;
         }
 
-        [Authorize]
+
         [HttpPut("addQuiz")]
         public async Task<IActionResult> AddQuizAsync(NewQuizDTO newQuizDTO)
         {
@@ -43,7 +43,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpGet("getQuizesInCategory/{categoryId}")]
         public async Task<IActionResult> GetUserCategoriesAsync([FromRoute] int categoryId)
         {
@@ -52,7 +52,7 @@ namespace JavaCourseAPI.Controllers
         }
         //QuizToAnswer
 
-        [Authorize]
+
         [HttpGet("getQuizToAnswer/{quizId}")]
         public async Task<IActionResult> GetQuizToAnswerAsync([FromRoute] int quizId)
         {
@@ -60,7 +60,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(quiz);
         }
 
-        [Authorize]
+
         [HttpPut("quizAnswer")]
         public async Task<IActionResult> SaveAnswerForQuizAsync(AnswerQuizDTO answerQuiz)
         {

@@ -21,7 +21,6 @@ namespace JavaCourseAPI.Controllers
             _categoryService = categoryService;
         }
 
-        [Authorize]
         [HttpGet("getUserCategories/{userId}")]
         public async Task<IActionResult> GetUserCategoriesAsync([FromRoute] int userId)
         {
@@ -29,7 +28,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(categories);
         }
 
-        [Authorize]
+
         [HttpGet("getGroupsForCategory/{categoryId}")]
         public async Task<IActionResult> GetGroupsForCategory([FromRoute] int categoryId)
         {
@@ -37,7 +36,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(groups);
         }
 
-        [Authorize]
+
         [HttpPut("addGroupToCategory")]
         public async Task<IActionResult> AddGroupToCategoryAsync(GroupToCategoryEditDTO groupToCategoryEditDTO)
         {
@@ -57,7 +56,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpPost("deleteGroupToCategory")]
         public async Task<IActionResult> DeleteGroupToCategoryAsync(GroupToCategoryEditDTO groupToCategoryEditDTO)
         {
@@ -77,7 +76,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpPut("addCategory")]
         public async Task<IActionResult> AddCategoryAsync( CategoryAddDTO categoryAddDTO)
         {
@@ -97,7 +96,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpGet("getCategoriesWithQuizes/{userId}")]
         public async Task<IActionResult> GetCategoriesWithQuizesAsync([FromRoute] int userId)
         {

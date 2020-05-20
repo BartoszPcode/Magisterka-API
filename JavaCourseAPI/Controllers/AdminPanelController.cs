@@ -21,7 +21,7 @@ namespace JavaCourseAPI.Controllers
             _adminPanelService = adminPanelService;
         }
 
-        [Authorize]
+
         [HttpGet("getAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -43,7 +43,7 @@ namespace JavaCourseAPI.Controllers
             return Ok();
         }
 
-        [Authorize]
+
         [HttpPut("addGroup/{groupName}")]
         public async Task<IActionResult> AddGroup([FromRoute]string groupName)
         {

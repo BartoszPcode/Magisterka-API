@@ -35,7 +35,8 @@ namespace JavaCourseAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Magisterka_v3;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Magisterka_v3;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:magisterka-db-server.database.windows.net,1433;Initial Catalog=MagisterkaDB_v1;Persist Security Info=False;User ID=pumba;Password=Zaq12wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 

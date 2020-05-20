@@ -22,6 +22,9 @@ using JavaCourseAPI.Services.AdminPanelServices;
 using JavaCourseAPI.Repositories.AdminPanelRepositories;
 using JavaCourseAPI.Services.ExerciseServices;
 using JavaCourseAPI.Repositories.ExerciseRepositories;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace JavaCourseAPI
 {
@@ -37,26 +40,26 @@ namespace JavaCourseAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
+            /* services.AddCors(options =>
+             {
+                 options.AddPolicy("CorsPolicy",
+                     builder => builder.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                     .AllowAnyHeader()
+                     .AllowCredentials());
+             });*/
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // configure strongly typed settings objects
-            /*var appSettingsSection = Configuration.GetSection("AppSettings");
+            var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-            //var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JWTSettings:JWTSecret").Value);*/
-            var key = Encoding.ASCII.GetBytes("Ptaki latajOM kluczem");
+            //var key = Encoding.ASCII.GetBytes(Configuration.GetSection("JWTSettings:JWTSecret").Value);
+            //var key = Encoding.ASCII.GetBytes("Ptaki latajOM kluczem");
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -77,6 +80,7 @@ namespace JavaCourseAPI
 
             //database
             services.AddEntityFrameworkSqlServer().AddDbContext<Magisterka_v1Context>();
+           // services.AddDbContext<Magisterka_v1Context>();
 
             //services:
             services.AddScoped<IAuthService, AuthService>();
@@ -96,6 +100,13 @@ namespace JavaCourseAPI
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
 
             services.AddAutoMapper();
+
+            /////////////////////
+            services.AddCors();
+            services.AddDirectoryBrowser();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
+            //////////////////////////
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,9 +122,14 @@ namespace JavaCourseAPI
                 app.UseHsts();
             }
 
+            //app.UseHttpsRedirection();
+            // app.UseAuthentication();
+            //app.UseCors("CorsPolicy");
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseCors("CorsPolicy");
+
+
             app.UseMvc();
         }
     }

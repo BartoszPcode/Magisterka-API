@@ -21,7 +21,7 @@ namespace JavaCourseAPI.Controllers
             _exerciseService = exerciseService;
         }
 
-        [Authorize]
+
         [HttpGet("getExercisesInCategory/{categoryId}")]
         public async Task<IActionResult> GetUserCategoriesAsync([FromRoute] int categoryId)
         {
@@ -29,7 +29,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(exercises);
         }
 
-        [Authorize]
+
         [HttpGet("getExercisesUserView/{categoryId}/{userId}")]
         public async Task<IActionResult> GetExercisesUserView([FromRoute] int categoryId, int userId)
         {
@@ -37,7 +37,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(categories);
         }
 
-        [Authorize]
+
         [HttpGet("getExerciseForStudent/{exerciseId}")]
         public async Task<IActionResult> GetExerciseForStudent([FromRoute] int exerciseId)
         {
@@ -45,7 +45,7 @@ namespace JavaCourseAPI.Controllers
             return Ok(exercise);
         }
 
-        [Authorize]
+
         [HttpGet("getExerciseAnswers/{exerciseId}")]
         public async Task<IActionResult> GetExerciseAnswers([FromRoute] int exerciseId)
         {
@@ -54,7 +54,7 @@ namespace JavaCourseAPI.Controllers
         }
 
 
-        [Authorize]
+
         [HttpPut("addExercise")]
         public async Task<IActionResult> AddExercise(AddExerciseDTO addExerciseDTO)
         {
@@ -74,7 +74,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpPut("answer/pass")]
         public async Task<IActionResult> ExerciseAnswerPass(ExerciseAnswerPass exerciseAnswerPass)
         {
@@ -94,7 +94,7 @@ namespace JavaCourseAPI.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpPut("saveExerciseAnswer")]
         public async Task<IActionResult> SaveExerciseAnswer(ExerciseAnswerDTO exerciseAnswerDTO)
         {
