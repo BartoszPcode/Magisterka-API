@@ -73,7 +73,8 @@ namespace JavaCourseAPI.Services
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            //var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes("Ptaki latajOM kluczem");
             string userRole = String.Empty;
 
             if (user.Admin == true)
